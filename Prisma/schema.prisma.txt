@@ -51,4 +51,3 @@ model sciFiMovies {
   genre       String  @db.VarChar(50)
   rating      Float
 }
-```
