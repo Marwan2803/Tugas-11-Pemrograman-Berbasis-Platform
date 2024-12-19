@@ -18,7 +18,7 @@ model actionMovies {
   harga  String @db.VarChar(100)
 }
 
-model ligainggris {
+model comedyMovies {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
@@ -29,7 +29,7 @@ model ligainggris {
   harga  String @db.VarChar(100)
 }
 
-model ligajerman {
+model dramaMovies {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
@@ -40,7 +40,7 @@ model ligajerman {
   harga  String @db.VarChar(100)
 }
 
-model ligaprancis {
+model horrorMovies {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
@@ -51,7 +51,7 @@ model ligaprancis {
   harga  String @db.VarChar(100)
 }
 
-model ligaspanyol {
+model sciFiMovies {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
