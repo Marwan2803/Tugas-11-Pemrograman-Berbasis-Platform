@@ -7,16 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model actionMovies {
-  id     Int    @id @default(autoincrement())
-  title   String @db.VarChar(100)
-  director String @db.VarChar(50)
-  releaseYear   Int
-  genre     String @db.VarChar(50)
-  rating      Float
-}
-
-model comedyMovies {
+model ligabelanda {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
@@ -27,7 +18,7 @@ model comedyMovies {
   harga  String @db.VarChar(100)
 }
 
-model dramaMovies {
+model ligainggris {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
@@ -38,7 +29,7 @@ model dramaMovies {
   harga  String @db.VarChar(100)
 }
 
-model horrorMovies {
+model ligajerman {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
@@ -49,7 +40,18 @@ model horrorMovies {
   harga  String @db.VarChar(100)
 }
 
-model sciFiMovies {
+model ligaprancis {
+  id     Int    @id @default(autoincrement())
+  nama   String @db.VarChar(50)
+  umur   Int
+  posisi String @db.VarChar(4)
+  NA     String @db.VarChar(50)
+  KA     String @db.VarChar(100)
+  KSI    String @db.VarChar(100)
+  harga  String @db.VarChar(100)
+}
+
+model ligaspanyol {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
