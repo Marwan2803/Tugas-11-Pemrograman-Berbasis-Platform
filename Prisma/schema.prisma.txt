@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model ligabelanda {
+model actionMovies {
   id     Int    @id @default(autoincrement())
   nama   String @db.VarChar(50)
   umur   Int
