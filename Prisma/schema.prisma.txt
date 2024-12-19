@@ -9,13 +9,11 @@ datasource db {
 
 model actionMovies {
   id     Int    @id @default(autoincrement())
-  nama   String @db.VarChar(50)
-  umur   Int
-  posisi String @db.VarChar(4)
-  NA     String @db.VarChar(50)
-  KA     String @db.VarChar(100)
-  KSI    String @db.VarChar(100)
-  harga  String @db.VarChar(100)
+  title   String @db.VarChar(100)
+  director String @db.VarChar(50)
+  releaseYear   Int
+  genre     String @db.VarChar(50)
+  rating      Float
 }
 
 model comedyMovies {
