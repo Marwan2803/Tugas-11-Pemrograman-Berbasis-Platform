@@ -5,114 +5,114 @@ const prisma = require("./modules/dbprisma");
 
 app.use(express.json());
 
-app.get("/ligabelanda", async (req, res) => {
+app.get("/actionmovies", async (req, res) => {
   try {
-    const footballers = await prisma.ligabelanda.findMany();
-    res.status(200).json({ message: "Pemain berhasil diambil", footballers });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-app.get("/ligainggris", async (req, res) => {
-  try {
-    const footballers = await prisma.ligainggris.findMany();
-    res.status(200).json({ message: "Pemain berhasil diambil", footballers });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-app.get("/ligajerman", async (req, res) => {
-  try {
-    const footballers = await prisma.ligajerman.findMany();
-    res.status(200).json({ message: "Pemain berhasil diambil", footballers });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-app.get("/ligaprancis", async (req, res) => {
-  try {
-    const footballers = await prisma.ligaprancis.findMany();
-    res.status(200).json({ message: "Pemain berhasil diambil", footballers });
-  } catch (error) {
-    res.status(500).json({ message: "Internal server error" });
-  }
-});
-app.get("/ligaspanyol", async (req, res) => {
-  try {
-    const footballers = await prisma.ligaspanyol.findMany();
-    res.status(200).json({ message: "Pemain berhasil diambil", footballers });
+    const movies = await prisma.actionMovies.findMany();
+    res.status(200).json({ message: "Movies retrieved successfully", movies });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-app.post("/pemain/:liga", async (req, res) => {
-  const liga = req.params.liga;
-  const { nama, umur, posisi, NA, KA, KSI, harga } = req.body;
+app.get("/comedymovies", async (req, res) => {
+  try {
+    const movies = await prisma.comedyMovies.findMany();
+    res.status(200).json({ message: "Movies retrieved successfully", movies });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.get("/dramamovies", async (req, res) => {
+  try {
+    const movies = await prisma.dramaMovies.findMany();
+    res.status(200).json({ message: "Movies retrieved successfully", movies });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.get("/horrormovies", async (req, res) => {
+  try {
+    const movies = await prisma.horrorMovies.findMany();
+    res.status(200).json({ message: "Movies retrieved successfully", movies });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.get("/scifimovies", async (req, res) => {
+  try {
+    const movies = await prisma.sciFiMovies.findMany();
+    res.status(200).json({ message: "Movies retrieved successfully", movies });
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error" });
+  }
+});
+
+app.post("/movies/:genre", async (req, res) => {
+  const genre = req.params.genre;
+  const { title, director, releaseYear, rating } = req.body;
 
   try {
-    const insertFootballer = await prisma[liga].create({
+    const insertMovie = await prisma[genre].create({
       data: {
-        nama,
-        umur,
-        posisi,
-        NA,
-        KA,
-        KSI,
-        harga,
+        title,
+        director,
+        releaseYear,
+        rating,
       },
     });
     res
       .status(201)
-      .json({ message: "Pemain berhasil ditambahkan ke liga " + liga });
+      .json({ message: "Movie successfully added to " + genre });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
-app.put("/pemain/:liga/:id", async (req, res) => {
+app.put("/movies/:genre/:id", async (req, res) => {
   const id = parseInt(req.params.id);
-  const liga = req.params.liga;
+  const genre = req.params.genre;
 
-  const { nama, umur, posisi, NA, KA, KSI, harga } = req.body;
+  const { title, director, releaseYear, rating } = req.body;
 
   try {
-    const updateFootballer = await prisma[liga].update({
+    const updateMovie = await prisma[genre].update({
       where: { id },
       data: {
-        nama,
-        umur,
-        posisi,
-        NA,
-        KA,
-        KSI,
-        harga,
+        title,
+        director,
+        releaseYear,
+        rating,
       },
     });
-    res.status(200).json({ message: "Data pemain berhasil diupdate!" });
+    res.status(200).json({ message: "Movie data successfully updated!" });
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "Internal server error" });
   }
 });
-app.delete("/pemain/:liga/:id", async (req, res) => {
+
+app.delete("/movies/:genre/:id", async (req, res) => {
   const id = parseInt(req.params.id);
-  const liga = req.params.liga;
+  const genre = req.params.genre;
   try {
-    const deleteUser = await prisma[liga].delete({
+    const deleteMovie = await prisma[genre].delete({
       where: { id },
     });
-    res.status(202).json({ message: "Data pemain berhasil dihapus!" });
+    res.status(202).json({ message: "Movie data successfully deleted!" });
   } catch (error) {
     res.status(500).json({ message: "Internal server error" });
   }
 });
 
 app.get("*", (req, res) => {
-  res.status(404).json({ message: "Url yang anda berikan tidak ada!" });
+  res.status(404).json({ message: "The URL you provided does not exist!" });
 });
 
 app.listen(port, () => {
   console.log("Server is running on port " + port);
 });
+                          
